@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.inter
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [ annotation-api, app-name, data, data-mongodb, http-client, jackson-databind, java, java-application, junit, logback, maven, readme, shade, test-resources, tomcat-server, yaml ]

@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: itapilog
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/*
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+
+mongodb.uri: mongodb://${MONGO_USERNAME:root}:${MONGO_PASSWORD:root}@${MONGO_HOST:localhost}:${MONGO_PORT:27017}/${MONGO_DB_NAME:miclog}?authSource=admin
+
