@@ -1,6 +1,15 @@
 micronaut:
+  codec:
+    json:
+      additionalTypes:
+        - text/javascript
   application:
     name: itapilog
+  http:
+    client:
+      exception-on-error-status: false
+    services:
+      exception-on-error-status: false
   router:
     static-resources:
       swagger:
