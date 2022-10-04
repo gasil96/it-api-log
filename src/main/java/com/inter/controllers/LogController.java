@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Slf4j
@@ -49,7 +50,7 @@ public class LogController {
 	@Operation(summary = "Create new Log")
 	@Post("/v1/logs/create")
 	@Status(HttpStatus.CREATED)
-	void create(@Body LogDTO logDTO) {
+	void create(@Body @Valid LogDTO logDTO) {
 		log.info("LogController.save - success - {}", logDTO);
 		logService.create(logDTO);
 	}
