@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  mongo-db-it:
+    container_name: mongo-db-it
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+  it-api-log:
+    container_name: it-api-log
+    restart: always
+    image: it-api-log
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo-db-it
+    links:
+      - mongo-db-it
+    environment:
+      MONGO_USERNAME: root
+      MONGO_PASSWORD: root
+      MONGO_HOST: mongo-db-it
+      MONGO_PORT: 27017
+      MONGO_DB_NAME: miclog

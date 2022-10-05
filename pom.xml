@@ -22,7 +22,7 @@
         <micronaut.data.version>3.8.0</micronaut.data.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
-        <micronaut.runtime>tomcat</micronaut.runtime>
+<!--        <micronaut.runtime>tomcat</micronaut.runtime>-->
         <exec.mainClass>com.inter.Application</exec.mainClass>
     </properties>
 
@@ -66,10 +66,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.micronaut.servlet</groupId>
-            <artifactId>micronaut-http-server-tomcat</artifactId>
-            <scope>compile</scope>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+            <version>3.7.1</version>
+            <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
@@ -218,6 +220,20 @@
                         <arg>-J-Dmicronaut.openapi.property.naming.strategy=SNAKE_CASE</arg>
                         <arg>-Amicronaut.processing.module=itapilog</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.inter.Application</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
